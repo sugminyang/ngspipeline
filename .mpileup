@@ -1,0 +1,1 @@
+samtools mpileup -B -q 1 -f ./util/ICGC_Pipeline/hg19.fasta SRR123_normal.filtered.bam SRR123_tumor.filtered.bam > SRR123_normal-SRR123_tumor.mpileup

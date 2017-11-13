@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.1" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="snu.bike.wholeExomSeq.Utils" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/Utils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="244" x="787" y="859"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="snu.bike.wholeExomSeq.CliParser" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/CliParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="515" width="195" x="41" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="snu.bike.wholeExomSeq.BWAExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/BWAExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="191" width="225" x="1372" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="snu.bike.wholeExomSeq.SamtoolsExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/SamtoolsExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="187" x="276" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="snu.bike.wholeExomSeq.Executor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/Executor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="227" width="167" x="1372" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="snu.bike.wholeExomSeq.mutect.BamtoolsExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/mutect/BamtoolsExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="198" x="2421" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="snu.bike.wholeExomSeq.mutect.GATKUtilExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/mutect/GATKUtilExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="245" width="438" x="894" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="snu.bike.wholeExomSeq.mutect.MutectExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/mutect/MutectExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="323" x="2058" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="snu.bike.wholeExomSeq.mutect.GATKExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/mutect/GATKExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="335" width="381" x="1637" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="snu.bike.wholeExomSeq.mutect.GATKRecaliExecutor" project="NGSPiplines" 
+    file="/NGSPiplines/src/snu/bike/wholeExomSeq/mutect/GATKRecaliExecutor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="351" x="503" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="test.testMutect" project="NGSPiplines" 
+    file="/NGSPiplines/src/test/testMutect.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1368" y="893"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="12">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="14">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="26">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
