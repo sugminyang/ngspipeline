@@ -24,7 +24,7 @@ public abstract class Executor {
 		try {
 			Runtime runtime = Runtime.getRuntime();
 			Process process = runtime.exec("/bin/sh " + script_path);
-//			process.waitFor();
+			process.waitFor();
 			
 			//TODO: to get print logs from each library.
 			BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -39,7 +39,7 @@ public abstract class Executor {
 				System.out.println(s);
 			}
 			
-		} catch (IOException e) {
+		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
 	}

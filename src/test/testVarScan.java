@@ -5,6 +5,10 @@ import java.io.IOException;
 import snu.bike.wholeExomSeq.BWAExecutor;
 import snu.bike.wholeExomSeq.CliParser;
 import snu.bike.wholeExomSeq.SamtoolsExecutor;
+import snu.bike.wholeExomSeq.mutect.BamtoolsExecutor;
+import snu.bike.wholeExomSeq.mutect.GATKExecutor;
+import snu.bike.wholeExomSeq.mutect.GATKRecaliExecutor;
+import snu.bike.wholeExomSeq.mutect.GATKUtilExecutor;
 import snu.bike.wholeExomSeq.varscan.SamtoolsMPileUP;
 import snu.bike.wholeExomSeq.varscan.VarScanExecutor;
 
@@ -30,8 +34,17 @@ public class testVarScan {
 			SamtoolsExecutor samtools_normal = new SamtoolsExecutor(cli.getExecutionPath(),outputFile_bwa_normal);
 			samtools_normal.excute();
 			
-			System.out.println("\n\t[Tumor]");
+			//3.preprocessing(cleaning,removeDuplication...)
+			String outputFile_samtools_normal = samtools_normal.getOutputFile();
+			GATKUtilExecutor gatk_util_normal = new GATKUtilExecutor(cli.getExecutionPath(), outputFile_samtools_normal);
+			gatk_util_normal.excute();
 			
+			//4.bam indexing.
+			String outputFile_gatkutil_normal = gatk_util_normal.getOutputFile();
+			BamtoolsExecutor bamtools_normal = new BamtoolsExecutor(cli.getExecutionPath(),outputFile_gatkutil_normal);
+			bamtools_normal.excute();
+			
+			System.out.println("\n\t[Tumor]");
 //			/**
 //			 * tumor
 //			 * */
@@ -42,9 +55,50 @@ public class testVarScan {
 			SamtoolsExecutor samtools_tumor = new SamtoolsExecutor(cli.getExecutionPath(),outputFile_bwa_tuomr);
 			samtools_tumor.excute();
 			
-			SamtoolsMPileUP samtools_mpileip = new SamtoolsMPileUP(cli.getExecutionPath(),cli.getReferenceSequence(), samtools_normal.getOutputFile(), samtools_tumor.getOutputFile());
+			String outputFile_samtools_tumor = samtools_tumor.getOutputFile();
+			GATKUtilExecutor gatk_util_tumor = new GATKUtilExecutor(cli.getExecutionPath(), outputFile_samtools_tumor);
+			gatk_util_tumor.excute();
+
+			String outputFile_gatkutil_tumor = gatk_util_tumor.getOutputFile();
+			BamtoolsExecutor bamtools_tumor = new BamtoolsExecutor(cli.getExecutionPath(),outputFile_gatkutil_tumor);
+			bamtools_tumor.excute();
+			
+			System.out.println("\n\t[Indel realignment]");
+			/**
+			 * merge normal/tumor sample
+			 */
+			String outputFile_bamtools_normal = bamtools_normal.getOutputFile();
+			String outputFile_bamtools_tumor = bamtools_tumor.getOutputFile();
+			
+			//GATK need two Input file (Normal/Tumor file)
+			GATKExecutor gatk = new GATKExecutor(cli.getExecutionPath(),cli.getReferenceSequence(),cli.getIndelFile(),cli.getSnpFile(),outputFile_bamtools_normal,outputFile_bamtools_tumor);
+			gatk.excute();
+			
+			String outputFile_gatk_normal = gatk.outputNormal();
+			String outputFile_gatk_tumor = gatk.outputTumor();
+			
+			System.out.println("\n\t[recali normal]");
+			/**
+			 * normal
+			 */
+			GATKRecaliExecutor gatk_recali_normal = new GATKRecaliExecutor(cli.getExecutionPath(),cli.getReferenceSequence(),cli.getIndelFile(),cli.getSnpFile(), outputFile_gatk_normal);
+			gatk_recali_normal.excute();
+
+			System.out.println("\n\t[recali tumor]");
+			/**
+			 * tumor
+			 */
+			GATKRecaliExecutor gatk_recali_tumor = new GATKRecaliExecutor(cli.getExecutionPath(),cli.getReferenceSequence(),cli.getIndelFile(),cli.getSnpFile(), outputFile_gatk_tumor);
+			gatk_recali_tumor.excute();
+			
+			System.out.println("\n\t[samtools mplieup]");
+			
+			String outputFile_gatk_recali_normal = gatk_recali_normal.getOutputFile();
+			String outputFile_gatk_recali_tumor = gatk_recali_tumor.getOutputFile();
+			SamtoolsMPileUP samtools_mpileip = new SamtoolsMPileUP(cli.getExecutionPath(),cli.getReferenceSequence(), outputFile_gatk_recali_normal, outputFile_gatk_recali_tumor);
 			samtools_mpileip.excute();
 			
+			System.out.println("\n\t[VarScan]");			
 			String outputFile_samtoolsMp = samtools_mpileip.getOutputFile();
 			VarScanExecutor varscan = new VarScanExecutor(cli.getExecutionPath(), outputFile_samtoolsMp);
 			varscan.excute();
