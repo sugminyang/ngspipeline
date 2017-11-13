@@ -31,6 +31,7 @@ public class testVarScan {
 			samtools_normal.excute();
 			
 			System.out.println("\n\t[Tumor]");
+			
 //			/**
 //			 * tumor
 //			 * */
