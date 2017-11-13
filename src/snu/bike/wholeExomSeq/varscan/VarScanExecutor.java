@@ -8,6 +8,7 @@ public class VarScanExecutor extends Executor{
 		this.exePath = executionPath;
 		this.inputFile = mpfile;
 		this.script_path =  "./"+ this.getClass().getSimpleName() + ".sh";
+		this.outputFile = Utils.extractSampleName(inputFile, ".snp.vcf");
 		
 		makeShellFile(this.script_path);
 	}
@@ -25,7 +26,12 @@ public class VarScanExecutor extends Executor{
 		builder.append(WHITESPACE);
 
 		builder.append(inputFile);
-
+		builder.append(WHITESPACE);
+		
+		builder.append("-output-vcf 1 >");
+		builder.append(WHITESPACE);
+		
+		builder.append(outputFile);
 		return builder.toString();
 
 	}

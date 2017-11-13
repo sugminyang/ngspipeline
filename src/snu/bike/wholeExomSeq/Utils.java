@@ -94,7 +94,7 @@ public class Utils {
         		libFormat = libName.substring(formatIdx+1);
         		libName = libName.substring(0,formatIdx);
         		
-        		System.out.println(libFormat);
+//        		System.out.println(libFormat);
         }
         
 		for(File tempFile : fileList)     {
