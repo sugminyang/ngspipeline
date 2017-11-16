@@ -19,7 +19,7 @@ public class VarScanExecutor extends Executor{
 		builder.append("java -jar");
 		builder.append(WHITESPACE);
 
-		builder.append(Utils.checkLibraryName(exePath,"VarScan.jar"));
+		builder.append(exePath + Utils.checkLibraryName(exePath,"VarScan.jar"));
 		builder.append(WHITESPACE);
 
 		builder.append("mpileup2snp");
@@ -28,7 +28,7 @@ public class VarScanExecutor extends Executor{
 		builder.append(inputFile);
 		builder.append(WHITESPACE);
 		
-		builder.append("-output-vcf 1 >");
+		builder.append("--output-vcf 1 >");
 		builder.append(WHITESPACE);
 		
 		builder.append(outputFile);
