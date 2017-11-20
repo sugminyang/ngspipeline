@@ -24,6 +24,7 @@ public class VarScanExecutor extends Executor{
 		StringBuilder builder = new StringBuilder();
 		System.out.println("\n\t [SNP]...");
 		makeSNPCommand(builder);
+		builder.append("\n");
 		System.out.println("\n\t [INDEL]...");
 		makeIndelCommand(builder);
 		
