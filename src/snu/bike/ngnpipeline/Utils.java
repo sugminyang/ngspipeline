@@ -1,4 +1,4 @@
-package snu.bike.wholeExomSeq;
+package snu.bike.ngnpipeline;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class Utils {
 	 * @param setID : a Id of one set(normal/tumor)
 	 * get files pair (normal / tumor) the same sample ID.
 	 * */
-	public static String[] recursiveFileRead(String sDirectoryPath,String setID) throws IOException
+	public static String[] recursiveFileRead(String sDirectoryPath,String setID, String mode) throws IOException
     {
          File dirFile = new File(sDirectoryPath);
          File[] fileList = dirFile.listFiles();
@@ -26,15 +26,30 @@ public class Utils {
                    int commaIndex = tempFileName.indexOf(".");
                    String fileType = tempFileName.substring(commaIndex+1);
 
-                   if(tempFileName.contains(setID) && fileType.equalsIgnoreCase("fastq"))		{
-                       if(tempFileName.contains("tumor"))	{
-                    	   	inputSet[1] = sDirectoryPath+tempFileName;
-//                    	   	System.out.println(sDirectoryPath + tempFileName);
-                       }
-                       else if(tempFileName.contains("normal"))	{
-                    	   	inputSet[0] = sDirectoryPath+tempFileName;
-//                    	   	System.out.println(sDirectoryPath + tempFileName);
-                       }
+                   if(mode.equalsIgnoreCase("rna"))	{
+	                   if(tempFileName.contains(setID) && fileType.contains("fastq"))		{
+	                       if(tempFileName.contains("_1"))	{
+	                    	   	inputSet[0] = sDirectoryPath+tempFileName;
+	//                    	   	System.out.println(sDirectoryPath + tempFileName);
+	                       }
+	                       else if(tempFileName.contains("_2"))	{
+	                    	   	inputSet[1] = sDirectoryPath+tempFileName;
+	//                    	   	System.out.println(sDirectoryPath + tempFileName);
+	                       }
+	                   }
+                   
+                   }
+                   else if(mode.equalsIgnoreCase("exome"))	{
+	                   if(tempFileName.contains(setID) && fileType.equalsIgnoreCase("fastq"))		{
+	                       if(tempFileName.contains("tumor"))	{
+	                    	   	inputSet[1] = sDirectoryPath+tempFileName;
+	//                    	   	System.out.println(sDirectoryPath + tempFileName);
+	                       }
+	                       else if(tempFileName.contains("normal"))	{
+	                    	   	inputSet[0] = sDirectoryPath+tempFileName;
+	//                    	   	System.out.println(sDirectoryPath + tempFileName);
+	                       }
+	                   }
                    }
               }
          }
@@ -115,6 +130,13 @@ public class Utils {
             }
        }
 		return libName;
+	}
+	
+	public static String getSampleName(String path)	{
+		int idx = path.lastIndexOf("/");
+		int underIdx = path.lastIndexOf("_");
+		
+		return path.substring(idx+1,underIdx);
 	}
 }
 

@@ -1,4 +1,4 @@
-package snu.bike.wholeExomSeq;
+package snu.bike.ngnpipeline;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

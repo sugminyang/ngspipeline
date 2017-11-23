@@ -1,7 +1,7 @@
 package snu.bike.wholeExomSeq.varscan;
 
-import snu.bike.wholeExomSeq.Executor;
-import snu.bike.wholeExomSeq.Utils;
+import snu.bike.ngnpipeline.Executor;
+import snu.bike.ngnpipeline.Utils;
 	
 public class VarScanExecutor extends Executor{
 	public String output_indel;

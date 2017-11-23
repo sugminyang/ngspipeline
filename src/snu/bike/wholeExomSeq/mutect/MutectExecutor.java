@@ -1,6 +1,6 @@
 package snu.bike.wholeExomSeq.mutect;
 
-import snu.bike.wholeExomSeq.Executor;
+import snu.bike.ngnpipeline.Executor;
 
 public class MutectExecutor extends Executor{
 	private String refSeq;

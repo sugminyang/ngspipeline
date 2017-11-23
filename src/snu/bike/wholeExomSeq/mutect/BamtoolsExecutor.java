@@ -1,6 +1,6 @@
 package snu.bike.wholeExomSeq.mutect;
 
-import snu.bike.wholeExomSeq.Executor;
+import snu.bike.ngnpipeline.Executor;
 
 public class BamtoolsExecutor extends Executor{
 	public BamtoolsExecutor(String excutionPath, String outputFile_gatkutil) {

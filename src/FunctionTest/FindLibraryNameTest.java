@@ -1,6 +1,6 @@
 package FunctionTest;
 
-import snu.bike.wholeExomSeq.Utils;
+import snu.bike.ngnpipeline.Utils;
 
 public class FindLibraryNameTest {
 
