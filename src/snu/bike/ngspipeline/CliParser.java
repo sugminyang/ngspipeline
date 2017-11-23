@@ -1,4 +1,4 @@
-package snu.bike.ngnpipeline;
+package snu.bike.ngspipeline;
 
 import static java.lang.System.out;
 

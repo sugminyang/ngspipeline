@@ -1,7 +1,7 @@
 package snu.bike.wholeExomSeq.varscan;
 
-import snu.bike.ngnpipeline.SamtoolsExecutor;
-import snu.bike.ngnpipeline.Utils;
+import snu.bike.ngspipeline.SamtoolsExecutor;
+import snu.bike.ngspipeline.Utils;
 
 public class SamtoolsMPileUP extends SamtoolsExecutor{
 	private final String OUTPUT_SAMTOOLS_MPILEUP = ".mpileup";

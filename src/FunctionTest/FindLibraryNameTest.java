@@ -1,6 +1,6 @@
 package FunctionTest;
 
-import snu.bike.ngnpipeline.Utils;
+import snu.bike.ngspipeline.Utils;
 
 public class FindLibraryNameTest {
 

@@ -1,4 +1,4 @@
-package snu.bike.ngnpipeline;
+package snu.bike.ngspipeline;
 
 public class SamtoolsExecutor extends Executor{
 	private final String OUTPUT_SAMTOOLS = ".filtered.bam";

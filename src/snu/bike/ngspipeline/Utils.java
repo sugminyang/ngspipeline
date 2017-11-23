@@ -1,4 +1,4 @@
-package snu.bike.ngnpipeline;
+package snu.bike.ngspipeline;
 
 import java.io.File;
 import java.io.IOException;

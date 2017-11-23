@@ -1,7 +1,7 @@
 package snu.bike.wholeExomSeq.mutect;
 
-import snu.bike.ngnpipeline.Executor;
-import snu.bike.ngnpipeline.Utils;
+import snu.bike.ngspipeline.Executor;
+import snu.bike.ngspipeline.Utils;
 
 public class GATKExecutor extends Executor{
 	private String refSeq;

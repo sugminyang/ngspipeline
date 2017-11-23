@@ -1,4 +1,4 @@
-package snu.bike.ngnpipeline;
+package snu.bike.ngspipeline;
 
 public class BWAExecutor extends Executor{
 	private final String OUTPUT_BWA = ".sam";

@@ -2,9 +2,9 @@ package test;
 
 import java.io.IOException;
 
-import snu.bike.ngnpipeline.BWAExecutor;
-import snu.bike.ngnpipeline.CliParser;
-import snu.bike.ngnpipeline.SamtoolsExecutor;
+import snu.bike.ngspipeline.BWAExecutor;
+import snu.bike.ngspipeline.CliParser;
+import snu.bike.ngspipeline.SamtoolsExecutor;
 import snu.bike.wholeExomSeq.mutect.BamtoolsExecutor;
 import snu.bike.wholeExomSeq.mutect.GATKExecutor;
 import snu.bike.wholeExomSeq.mutect.GATKRecaliExecutor;
