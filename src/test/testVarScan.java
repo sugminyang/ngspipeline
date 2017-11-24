@@ -31,7 +31,7 @@ public class testVarScan {
 			
 			//2. convert sam to bam
 			String outputFile_bwa_normal = bwa_normal.getOutputFile();
-			SamtoolsExecutor samtools_normal = new SamtoolsExecutor(cli.getExecutionPath(),outputFile_bwa_normal);
+			SamtoolsExecutor samtools_normal = new SamtoolsExecutor(cli.getExecutionPath(),cli.getProcess(),outputFile_bwa_normal,cli.getNgsMode());
 			samtools_normal.excute();
 			
 			//3.preprocessing(cleaning,removeDuplication...)
@@ -52,7 +52,7 @@ public class testVarScan {
 			bwa_tumor.excute();			
 
 			String outputFile_bwa_tuomr = bwa_tumor.getOutputFile();
-			SamtoolsExecutor samtools_tumor = new SamtoolsExecutor(cli.getExecutionPath(),outputFile_bwa_tuomr);
+			SamtoolsExecutor samtools_tumor = new SamtoolsExecutor(cli.getExecutionPath(),cli.getProcess(),outputFile_bwa_tuomr,cli.getNgsMode());
 			samtools_tumor.excute();
 			
 			String outputFile_samtools_tumor = samtools_tumor.getOutputFile();

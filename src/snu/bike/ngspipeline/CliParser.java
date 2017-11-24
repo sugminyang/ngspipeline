@@ -25,6 +25,9 @@ public class CliParser {
 	@Option(name="-r", aliases="--ref", usage="reference sequence fasta file")
 	private String referenceSequence;	
 
+	@Option(name="-mg", aliases="--merge", usage="assemble transcripts..")
+	private String mergeFile;		
+	
 	//rna-seq hisat index
 	@Option(name="-idx", aliases="--index", usage="hisat2 index")
 	private String indexes;	
@@ -200,6 +203,10 @@ public class CliParser {
 
 	public String getIndexes() {
 		return indexes;
+	}
+
+	public String getMergeFile() {
+		return mergeFile;
 	}
 
 	
