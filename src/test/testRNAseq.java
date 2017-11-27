@@ -18,13 +18,14 @@ public class testRNAseq {
 			Vector<String> pair1 = cli.getInputPair1();
 			Vector<String> pair2 = cli.getInputPair2();
 			
-			Vector<String> bamFiles = cli.getInputPair1();
-			Vector<String> gtfFiles = cli.getInputPair2();
+			Vector<String> bamFiles = new Vector<>();
+			Vector<String> gtfFiles = new Vector<>();
 			
-			for(int i =0; i<cli.getInputPair1().size(); i++)	{
+			for(int i =0; i<pair1.size(); i++)	{
 
 				System.out.println("\t [hisat2].. : "+ (i+1));
-
+				System.out.println("num of sample..: " + pair1.size() + ", " + pair2.size());
+				
 				//1. alignment				
 				Hisat2Executor hisat2 = new Hisat2Executor(cli.getExecutionPath(),cli.getProcess(),pair1.get(i),pair2.get(i),cli.getIndexes());
 				hisat2.excute();

@@ -41,6 +41,7 @@ public abstract class Executor {
 			
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 	

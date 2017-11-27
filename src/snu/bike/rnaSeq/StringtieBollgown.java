@@ -54,12 +54,12 @@ public class StringtieBollgown extends Stringtie{
 		builder.append("-o");
 		builder.append(WHITESPACE);
 		
-		String fileName = Utils.getSampleName(inputFile);
+		String fileName = Utils.getSampleName(gtfFile);
 		if(fileName.contains("_"))	{
 			int idx = fileName.indexOf("_");
 			fileName = fileName.substring(0,idx);
 		}
-		builder.append("/ballgown/"+fileName+"/"+gtfFile);
+		builder.append("./ballgown/"+fileName+"/"+gtfFile);
 		
 		builder.append(WHITESPACE);		
 

@@ -21,7 +21,7 @@ public class Hisat2Executor extends Executor{
 		this.script_path =  "./"+ this.getClass().getSimpleName() + ".sh";
 		this.indexPath = indexPath;
 		
-		System.out.println(pair1);
+		System.out.println(pair1 + ", " + pair2);
 		this.outputFile = Utils.extractSampleName(Utils.getSampleName(pair1),OUTPUT_HISAT2);
 		
 		makeShellFile(this.script_path);
