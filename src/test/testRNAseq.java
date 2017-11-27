@@ -58,6 +58,7 @@ public class testRNAseq {
 				bollgown.excute();
 			}
 			
+			System.out.println("===========finish rna-seq pipeline===========");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
