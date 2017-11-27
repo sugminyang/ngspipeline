@@ -6,7 +6,7 @@ import snu.bike.ngspipeline.CliParser;
 import snu.bike.ngspipeline.SamtoolsExecutor;
 import snu.bike.rnaSeq.Hisat2Executor;
 import snu.bike.rnaSeq.Stringtie;
-import snu.bike.rnaSeq.StringtieBollgown;
+import snu.bike.rnaSeq.StringtieBallgown;
 import snu.bike.rnaSeq.StringtieMerge;
 
 public class testRNAseq {
@@ -54,7 +54,7 @@ public class testRNAseq {
 			
 			for(int i =0; i<bamFiles.size(); i++)	{
 				System.out.println("\t [ballgown]..:"+ (i+1));
-				StringtieBollgown bollgown = new StringtieBollgown(cli.getExecutionPath(), cli.getProcess(), output_sMerge, bamFiles.get(i),gtfFiles.get(i));
+				StringtieBallgown bollgown = new StringtieBallgown(cli.getExecutionPath(), cli.getProcess(), output_sMerge, bamFiles.get(i),gtfFiles.get(i));
 				bollgown.excute();
 			}
 			

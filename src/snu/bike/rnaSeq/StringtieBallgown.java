@@ -2,12 +2,12 @@ package snu.bike.rnaSeq;
 
 import snu.bike.ngspipeline.Utils;
 
-public class StringtieBollgown extends Stringtie{
+public class StringtieBallgown extends Stringtie{
 	private String mergeFile;
 	private String bamFile;
 	private String gtfFile;
 
-	public StringtieBollgown(String excutionPath, int process, String mergeFile, String bamFile, String gtfFile) {
+	public StringtieBallgown(String excutionPath, int process, String mergeFile, String bamFile, String gtfFile) {
 		super();
 		
 		this.exePath = excutionPath;
