@@ -27,6 +27,7 @@ public class testVarScan {
 			
 			for(int i =0; i<input_normal.size(); i++)	{
 				System.out.println("#########[Pipeline start]#########");
+				long startTime = System.nanoTime();
 				System.out.println("[input]: <"+input_normal.get(i) + ", " + input_tumor.get(i) + ">");
 				
 				System.out.println("\t[Normal]");
@@ -111,7 +112,9 @@ public class testVarScan {
 				VarScanExecutor varscan = new VarScanExecutor(cli.getExecutionPath(), outputFile_samtoolsMp);
 				varscan.excute();
 				
-				System.out.println("[Finish] sample : " + (i+1) + "/" + input_normal.size());
+				long endTime = System.nanoTime();
+				System.out.println("[Finish] sample : [" + (i+1) + "/" + input_normal.size() + "], duration: " + (endTime - startTime));
+				
 			}
 			
 			System.out.println("\n#########Finish all steps#########");
