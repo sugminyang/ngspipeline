@@ -85,14 +85,20 @@ public class CliParser {
 		doParsing();
 //		System.out.println(this.inputSet);
 		if(ngsMode.equalsIgnoreCase("exom"))	{
+			inputNormal = new Vector<>();
+			inputTumor = new Vector<>();
+			
+			int idx = inputSet.lastIndexOf("/");	
+			if(idx == -1)	{
+				idx = 0;
+			}
+			
+			String directory = inputSet.substring(0, idx+1);
+			
 			for( String set : Utils.splitInputSets(this.inputSet))	{	// inputset1, inputset2, ...
-				int idx = set.lastIndexOf("/");
-				if(idx == -1)	{
-					idx = 0;
-				}
+				idx = set.lastIndexOf("/");	
 				
 				String setID = set.substring(idx+1);
-				String directory = set.substring(0, idx+1);
 	//			System.out.println(setID + " : " + directory);
 				String[] inputSet = Utils.recursiveFileRead(directory,setID,ngsMode);
 	//			System.out.println(inputSet);

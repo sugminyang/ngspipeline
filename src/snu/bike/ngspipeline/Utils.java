@@ -39,7 +39,7 @@ public class Utils {
 	                   }
                    
                    }
-                   else if(mode.equalsIgnoreCase("exome"))	{
+                   else if(mode.equalsIgnoreCase("exom"))	{
 	                   if(tempFileName.contains(setID) && fileType.equalsIgnoreCase("fastq"))		{
 	                       if(tempFileName.contains("tumor"))	{
 	                    	   	inputSet[1] = sDirectoryPath+tempFileName;
