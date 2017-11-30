@@ -36,6 +36,9 @@ public class StringtieBallgown extends Stringtie{
 		 * */
 				
 		StringBuilder builder = new StringBuilder();
+		builder.append("sudo");
+		builder.append(WHITESPACE);
+		
 		builder.append(exePath + "stringtie");
 		builder.append(WHITESPACE);
 		builder.append("-e -B");

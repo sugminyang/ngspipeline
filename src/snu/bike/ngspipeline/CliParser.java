@@ -36,8 +36,8 @@ public class CliParser {
 	private String inputSet;
 	
 	//exome
-	private String inputNormal;
-	private String inputTumor;
+	private Vector<String> inputNormal;
+	private Vector<String> inputTumor;
 	
 	//rna
 	private Vector<String> inputPair1;
@@ -96,8 +96,8 @@ public class CliParser {
 	//			System.out.println(setID + " : " + directory);
 				String[] inputSet = Utils.recursiveFileRead(directory,setID,ngsMode);
 	//			System.out.println(inputSet);
-				this.inputNormal = inputSet[0];
-				this.inputTumor = inputSet[1];
+				this.inputNormal.add(inputSet[0]);
+				this.inputTumor.add(inputSet[1]);
 			}
 		}
 		else if(ngsMode.equalsIgnoreCase("rna"))	{
@@ -173,21 +173,15 @@ public class CliParser {
 		return str;
 	}
 
-	public String getInputNormal() {
+	public Vector<String> getInputNormal() {
 		return inputNormal;
 	}
 
-	public void setInputNormal(String inputNormal) {
-		this.inputNormal = inputNormal;
-	}
 
-	public String getInputTumor() {
+	public Vector<String> getInputTumor() {
 		return inputTumor;
 	}
 
-	public void setInputTumor(String inputTumor) {
-		this.inputTumor = inputTumor;
-	}
 
 	public String getNgsMode() {
 		return ngsMode;
