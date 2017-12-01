@@ -110,7 +110,7 @@ public class testVarScan {
 				
 				System.out.println("\n\t[VarScan]");			
 				String outputFile_samtoolsMp = samtools_mpileip.getOutputFile();
-				VarScanExecutor varscan = new VarScanExecutor(cli.getExecutionPath(), outputFile_samtoolsMp,cli.getOutputFile());
+				VarScanExecutor varscan = new VarScanExecutor(cli.getExecutionPath(), outputFile_samtoolsMp);
 				varscan.excute();
 				
 				long endTime = System.nanoTime();

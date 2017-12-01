@@ -7,14 +7,14 @@ public class VarScanExecutor extends Executor{
 	public String output_indel;
 	public String output_snp;
 	
-	public VarScanExecutor(String executionPath, String mpfile,String outputFileName) {
+	public VarScanExecutor(String executionPath, String mpfile) {
 		this.exePath = executionPath;
 		this.inputFile = mpfile;
 		this.script_path =  "./"+ this.getClass().getSimpleName() + ".sh";
-		output_snp = Utils.extractSampleName(outputFileName, ".snp.vcf");
-		output_indel = Utils.extractSampleName(outputFileName, ".indel.vcf");
+		output_snp = Utils.extractSampleName(inputFile, ".snp.vcf");
+		output_indel = Utils.extractSampleName(inputFile, ".indel.vcf");
 		
-		this.outputFile = Utils.extractSampleName(outputFileName, ".vcf");
+		this.outputFile = output_snp + ", " + output_indel;
 		
 		makeShellFile(this.script_path);
 	}
