@@ -1,6 +1,7 @@
 package test;
 
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import snu.bike.ngspipeline.CliParser;
 import snu.bike.ngspipeline.SamtoolsExecutor;
@@ -14,6 +15,8 @@ public class testRNAseq {
 	public static void main(String[] args) {
 		try {
 			CliParser cli = new CliParser(args);
+			
+			long startTime = System.nanoTime();
 			
 			Vector<String> pair1 = cli.getInputPair1();
 			Vector<String> pair2 = cli.getInputPair2();
@@ -58,7 +61,8 @@ public class testRNAseq {
 				bollgown.excute();
 			}
 			
-			System.out.println("===========finish rna-seq pipeline===========");
+			long endTime = System.nanoTime();
+			System.out.println("===========finish rna-seq pipeline===========" + "duration: " + TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)+"s");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

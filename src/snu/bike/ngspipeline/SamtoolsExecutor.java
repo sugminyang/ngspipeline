@@ -25,7 +25,7 @@ public class SamtoolsExecutor extends Executor{
 		//samtools view -bSh -F 0x800 test.sam -o test.filtered.bam
 
 		StringBuilder builder = new StringBuilder();
-//		builder.append(exePath);	//TODO: After samtools lib install under /bin folder. then erase this comment line.
+		builder.append(exePath);	//TODO: After samtools lib install under /bin folder. then erase this comment line.
 		builder.append("samtools");
 		builder.append(WHITESPACE);
 		
