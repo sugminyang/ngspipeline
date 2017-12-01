@@ -2,6 +2,7 @@ package test;
 
 import java.io.IOException;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import snu.bike.ngspipeline.BWAExecutor;
 import snu.bike.ngspipeline.CliParser;
@@ -109,11 +110,11 @@ public class testVarScan {
 				
 				System.out.println("\n\t[VarScan]");			
 				String outputFile_samtoolsMp = samtools_mpileip.getOutputFile();
-				VarScanExecutor varscan = new VarScanExecutor(cli.getExecutionPath(), outputFile_samtoolsMp);
+				VarScanExecutor varscan = new VarScanExecutor(cli.getExecutionPath(), outputFile_samtoolsMp,cli.getOutputFile());
 				varscan.excute();
 				
 				long endTime = System.nanoTime();
-				System.out.println("[Finish] sample : [" + (i+1) + "/" + input_normal.size() + "], duration: " + (endTime - startTime));
+				System.out.println("[Finish] sample : [" + (i+1) + "/" + input_normal.size() + "], duration: " + TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)+"s");
 				
 			}
 			
