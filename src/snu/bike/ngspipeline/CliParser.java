@@ -2,6 +2,8 @@ package snu.bike.ngspipeline;
 
 import static java.lang.System.out;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -32,16 +34,15 @@ public class CliParser {
 	@Option(name="-idx", aliases="--index", usage="hisat2 index")
 	private String indexes;	
 	
-	@Option(name="-i", usage="")
-	private String inputSet;
+	@Option(name="-i", usage="multiinput file read")
+	private String inputFile;
 	
 	//exome
 	private Vector<String> inputNormal;
 	private Vector<String> inputTumor;
 	
 	//rna
-	private Vector<String> inputPair1;
-	private Vector<String> inputPair2;	
+	private Vector<SamplePair> inputPair;
 
 	@Option(name="-indel", usage="")
 	private String indelFile;
@@ -83,54 +84,29 @@ public class CliParser {
 		this.args = args;
 		
 		doParsing();
-//		System.out.println(this.inputSet);
-		if(ngsMode.equalsIgnoreCase("exom"))	{
-			inputNormal = new Vector<>();
-			inputTumor = new Vector<>();
+
+		//file read.
+		BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+		String lineString = "";
+		String inputDir = "";
+		boolean flag = false;
+		inputPair = new Vector<SamplePair>();
+		
+		while((lineString=reader.readLine()) != null) {
+			String[] splitedLine = lineString.split("\t");
 			
-			int idx = inputSet.lastIndexOf("/");	
-			if(idx == -1)	{
-				idx = 0;
+			if(flag)	{
+				inputPair.add(new SamplePair(splitedLine[0], splitedLine[1],inputDir));
+				System.out.println(inputPair.get(inputPair.size()-1));
 			}
-			
-			String directory = inputSet.substring(0, idx+1);
-			
-			for( String set : Utils.splitInputSets(this.inputSet))	{	// inputset1, inputset2, ...
-				idx = set.lastIndexOf("/");	
-				
-				String setID = set.substring(idx+1);
-	//			System.out.println(setID + " : " + directory);
-				String[] inputSet = Utils.recursiveFileRead(directory,setID,ngsMode);
-	//			System.out.println(inputSet);
-				this.inputNormal.add(inputSet[0]);
-				this.inputTumor.add(inputSet[1]);
+			else if(lineString.contains("input_dir"))	{
+				if(splitedLine.length == 2)	{
+					inputDir = splitedLine[1];	
+				}
 			}
-		}
-		else if(ngsMode.equalsIgnoreCase("rna"))	{
-			inputPair1 = new Vector<>();
-			inputPair2 = new Vector<>();
-			
-			int idx = inputSet.lastIndexOf("/");	
-			if(idx == -1)	{
-				idx = 0;
+			else if(lineString.contains("pair_1") && lineString.contains("pair_2"))	{
+				flag = true;
 			}
-			
-			String directory = inputSet.substring(0, idx+1);
-			
-			for( String set : Utils.splitInputSets(this.inputSet))	{	// inputset1, inputset2, ...
-				idx = set.lastIndexOf("/");	
-				
-				String setID = set.substring(idx+1);
-				
-//				System.out.println(setID + " : " + directory);
-				String[] inputSet = Utils.recursiveFileRead(directory,setID,ngsMode);
-//				System.out.println(inputSet);
-				this.inputPair1.add(inputSet[0]);
-				this.inputPair2.add(inputSet[1]);
-			}
-		}
-		else	{
-			System.out.println("[error] ngsmode worng !!!");
 		}
 	}
 
@@ -169,7 +145,7 @@ public class CliParser {
 		}
 		else if(ngsMode.equalsIgnoreCase("exom"))	{
 			str = "CliClass [excutionPath=" + excutionPath + ", process=" + process + ", referenceSequence="
-					+ referenceSequence + ", inputFastaq=" + inputSet + ",\nindelFile=" + indelFile + ", snpFile="
+					+ referenceSequence + ", inputFastaq=" + inputFile + ",\nindelFile=" + indelFile + ", snpFile="
 					+ snpFile + ", cosmicFile=" + cosmicFile + ", outputFile=" + outputFile + "]";
 		}
 		else	{
@@ -193,12 +169,8 @@ public class CliParser {
 		return ngsMode;
 	}
 
-	public Vector<String> getInputPair1() {
-		return inputPair1;
-	}
-
-	public Vector<String> getInputPair2() {
-		return inputPair2;
+	public Vector<SamplePair> getInputPair() {
+		return inputPair;
 	}
 
 	public String getIndexes() {

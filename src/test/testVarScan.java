@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import snu.bike.ngspipeline.BWAExecutor;
 import snu.bike.ngspipeline.CliParser;
+import snu.bike.ngspipeline.SamplePair;
 import snu.bike.ngspipeline.SamtoolsExecutor;
 import snu.bike.wholeExomSeq.mutect.BamtoolsExecutor;
 import snu.bike.wholeExomSeq.mutect.GATKExecutor;
@@ -23,20 +24,19 @@ public class testVarScan {
 		try {
 			CliParser cli = new CliParser(args);
 			
-			Vector<String> input_normal = cli.getInputNormal();
-			Vector<String> input_tumor = cli.getInputTumor();
+			Vector<SamplePair> input = cli.getInputPair();
 			
-			for(int i =0; i<input_normal.size(); i++)	{
+			for(int i =0; i<input.size(); i++)	{
 				System.out.println("#########[Pipeline start]#########");
 				long startTime = System.nanoTime();
-				System.out.println("[input]: <"+input_normal.get(i) + ", " + input_tumor.get(i) + ">");
+				System.out.println("[input]: <"+input.get(i).getNormalSample() + ", " + input.get(i).getTumorSample() + ">");
 				
 				System.out.println("\t[Normal]");
 				/**
 				 * normal
 				 */
 				//1. alignment
-				BWAExecutor bwa_normal = new BWAExecutor(cli.getExecutionPath(), cli.getProcess(),cli.getReferenceSequence(), input_normal.get(i));
+				BWAExecutor bwa_normal = new BWAExecutor(cli.getExecutionPath(), cli.getProcess(),cli.getReferenceSequence(), input.get(i).getNormalSample());
 				bwa_normal.excute();
 				
 				//2. convert sam to bam
@@ -58,7 +58,7 @@ public class testVarScan {
 //				/**
 //				 * tumor
 //				 * */
-				BWAExecutor bwa_tumor = new BWAExecutor(cli.getExecutionPath(), cli.getProcess(),cli.getReferenceSequence(), input_tumor.get(i));
+				BWAExecutor bwa_tumor = new BWAExecutor(cli.getExecutionPath(), cli.getProcess(),cli.getReferenceSequence(), input.get(i).getTumorSample());
 				bwa_tumor.excute();			
 
 				String outputFile_bwa_tuomr = bwa_tumor.getOutputFile();
@@ -114,7 +114,7 @@ public class testVarScan {
 				varscan.excute();
 				
 				long endTime = System.nanoTime();
-				System.out.println("[Finish] sample : [" + (i+1) + "/" + input_normal.size() + "], duration: " + TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)+"s");
+				System.out.println("[Finish] sample : [" + (i+1) + "/" + input.size() + "], duration: " + TimeUnit.SECONDS.convert((endTime - startTime), TimeUnit.NANOSECONDS)+"s");
 				
 			}
 			

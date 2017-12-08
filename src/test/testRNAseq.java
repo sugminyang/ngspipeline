@@ -4,6 +4,7 @@ import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 import snu.bike.ngspipeline.CliParser;
+import snu.bike.ngspipeline.SamplePair;
 import snu.bike.ngspipeline.SamtoolsExecutor;
 import snu.bike.rnaSeq.Hisat2Executor;
 import snu.bike.rnaSeq.Stringtie;
@@ -18,19 +19,18 @@ public class testRNAseq {
 			
 			long startTime = System.nanoTime();
 			
-			Vector<String> pair1 = cli.getInputPair1();
-			Vector<String> pair2 = cli.getInputPair2();
+			Vector<SamplePair> input = cli.getInputPair();
 			
 			Vector<String> bamFiles = new Vector<>();
 			Vector<String> gtfFiles = new Vector<>();
 			
-			for(int i =0; i<pair1.size(); i++)	{
+			for(int i =0; i<input.size(); i++)	{
 
 				System.out.println("\t [hisat2].. : "+ (i+1));
-				System.out.println("num of sample..: " + pair1.size() + ", " + pair2.size());
+				System.out.println("num of sample..: " + input.size() + ", " + input.size());
 				
 				//1. alignment				
-				Hisat2Executor hisat2 = new Hisat2Executor(cli.getExecutionPath(),cli.getProcess(),pair1.get(i),pair2.get(i),cli.getIndexes());
+				Hisat2Executor hisat2 = new Hisat2Executor(cli.getExecutionPath(),cli.getProcess(),input.get(i).getPairedend1(),input.get(i).getPairedend2(),cli.getIndexes());
 				hisat2.excute();
 		
 				System.out.println("\t [samtools]..:"+ (i+1));
