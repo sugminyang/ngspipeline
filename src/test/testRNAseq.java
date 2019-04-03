@@ -16,7 +16,7 @@ public class testRNAseq {
 	public static void main(String[] args) {
 		try {
 			CliParser cli = new CliParser(args);
-			
+			//test
 			long startTime = System.nanoTime();
 			
 			Vector<SamplePair> input = cli.getInputPair();
